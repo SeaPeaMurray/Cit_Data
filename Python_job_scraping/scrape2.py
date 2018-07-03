@@ -27,11 +27,13 @@ def indeed():
 	myurl = indeed_url + 'q=' + pos + '&l=' +  location
 	page_r = requests.get(myurl)
 	page_soup = BeautifulSoup(page_r.content, 'html.parser')
-	if True:
-		print(page_soup.head)
-	return page_soup
+	ps_entries = page_soup.findall('h2', class_='jobtitle')
+	for item in ps_entries:
+		print(item)
+	# with open('scrape_output.txt', 'w') as file:
+	# 	for line in page_soup.prettify():
+	# 		file.write(line)
 
 
-# if __name__ == '__main__':
-
-indeed()
+if __name__ == '__main__':
+	indeed()
