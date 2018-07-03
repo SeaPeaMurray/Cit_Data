@@ -2,12 +2,13 @@ import requests
 from time import sleep
 from bs4 import BeautifulSoup
 
-def indeed():
+pos = input('What keyword? ')
+city = input('In which city? ')
+state = input('In which state? ***Use two letter state abbreviation.*** ')
+count = input('How many pages to scrape?')
+int_count = int(count)
 
-	#Create variables from input
-	pos = input('What keyword?')
-	city = input('Which city?')
-	state = input('Which state? Use two letter abbreviation.')
+def indeed():
 
 	#Assert variables will execute
 	errors = []
@@ -27,9 +28,23 @@ def indeed():
 	myurl = indeed_url + 'q=' + pos + '&l=' +  location
 	page_r = requests.get(myurl)
 	page_soup = BeautifulSoup(page_r.content, 'html.parser')
-	ps_entries = page_soup.findall('h2', class_='jobtitle')
-	for item in ps_entries:
-		print(item)
+	page_soup_entries = page_soup.find_all('h2', class_='jobtitle')
+	page_soup_summaries = page_soup.find_all('span', class_='summary')
+	print(page_soup_entries)
+
+	for i in range(1, int_count - 1):
+		if i == 1:
+			myurl = indeed_url + 'q=' + pos + '&l=' +  location
+		myurl = indeed_url.append('&start=' + str(i))
+		page_r = requests.get(myurl)
+		page_soup = BeautifulSoup(page_r.content, 'html.parser')
+		page_soup_entries = page_soup.find_all('h2', class_='jobtitle')
+		page_soup_summaries = page_soup.find_all('span', class_='summary')
+
+	# page_r = requests.get(myurl)
+	# 	indeed_url2 = indeed_url.append('&start=' + str(i))
+	# for item in ps_entries:
+	# 	print(item)
 	# with open('scrape_output.txt', 'w') as file:
 	# 	for line in page_soup.prettify():
 	# 		file.write(line)
