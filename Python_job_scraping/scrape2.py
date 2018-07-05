@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 pos = input('What keyword? ')
 city = input('In which city? ')
 state = input('In which state? ***Use two letter state abbreviation.*** ')
-count = input('How many pages to scrape?')
+count = input('How many pages to scrape? ***Exceeding true number of results pages will create duplicates.***')
 int_count = int(count)
 
 def indeed():
@@ -50,7 +50,7 @@ def indeed():
 			for item in page_soup.find_all('div'):
 				if item.get('data-tn-component') == 'organicJob':
 					soup_list.append(item)
-					
+
 			# page_soup_entries = page_soup.find_all('h2', class_='jobtitle')
 			# page_soup_summaries = page_soup.find_all('span', class_='summary')
 			# indeed_dict[page_soup_entries] = page_soup_summaries
