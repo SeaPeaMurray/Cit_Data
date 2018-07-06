@@ -2,16 +2,17 @@ import requests
 import pandas as pd
 from time import sleep
 from bs4 import BeautifulSoup
+import indeed_todf
 
 print("""This script requires the following libraries to function:\n
 	requests, pandas, time, bs4.\n
 	Use pip to install them if they are not installed.""")
-sleep(2)
+sleep(1)
 
 pos = input('What keyword? ')
 city = input('In which city? ')
 state = input('In which state?\n***Use two letter state abbreviation.*** ')
-count = input('How many pages to scrape?\n***Exceeding true number of results pages will create duplicates.***')
+count = input('How many pages to scrape?\n***Exceeding true number of results pages will create duplicates.*** ')
 int_count = int(count)
 
 def indeed():
@@ -55,28 +56,10 @@ def indeed():
 					soup_list.append(item)
 			collection_list += soup_list
 	
-	print(len(collection_list)) # Remove this later
+	print(len(collection_list))
+	print(collection_list[0]) # Remove these later
 
-# Company
-company_tag = item[i].span.a.contents
-
-# Title
-title_tag = item[i].h2.a.get('title')
-
-# Location
-location_tag = item[i].find(class_ = 'location').contents
-
-# Summary
-summary_tag = item[i].tr.td.div.find(class_ = 'summary').contents
-
-# Experiencelist
-item[i].tr.td.div.find(class_ = 'experienceList').contents
-
-# Listing age
-item[i].tr.td.find(class_ = 'date').contents
-
-# job link
-link = 'www.indeed.com' + item[i].h2.a.get('href')
+	# indeed_todf.indeedtoframe(collection_list)
 
 if __name__ == '__main__':
 	indeed()
@@ -91,3 +74,25 @@ if __name__ == '__main__':
 		# for item in page_soup.find_all('div'):
     #   		if item.get('data-tn-component') == 'organicJob':
     #   		    soup_list.append(item)
+
+
+# # Company
+# company_tag = item[i].span.a.contents
+
+# # Title
+# title_tag = item[i].h2.a.get('title')
+
+# # Location
+# location_tag = item[i].find(class_ = 'location').contents
+
+# # Summary
+# summary_tag = item[i].tr.td.div.find(class_ = 'summary').contents
+
+# # Experiencelist
+# item[i].tr.td.div.find(class_ = 'experienceList').contents
+
+# # Listing age
+# item[i].tr.td.find(class_ = 'date').contents
+
+# # job link
+# link = 'www.indeed.com' + item[i].h2.a.get('href')

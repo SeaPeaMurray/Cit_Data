@@ -1,26 +1,31 @@
 import pandas as pd
+from bs4 import BeautifulSoup
 
-def toframe(indeeds, dataframe):
+def doconvert(result):#, dataframe):
+	indeed_dict = {}
 	
+	# Title
+	title_tag = result.h2.a.get('title')
 
+	# Company
+	comp_tag = result.span.a.contents
 
-# Title
-title_tag = item[i].h2.a.get('title')
+	# Location
+	loc_tag = result.find(class_ = 'location').contents
 
-# Company
-company_tag = item[i].span.a.contents
+	# Summary
+	sum_tag = result.tr.td.div.find(class_ = 'summary').contents
 
-# Location
-location_tag = item[i].find(class_ = 'location').contents
+	# Experiencelist
+	exp_tag = result.tr.td.div.find(class_ = 'experienceList').contents
 
-# Summary
-summary_tag = item[i].tr.td.div.find(class_ = 'summary').contents
+	# Listing age
+	age_tag = result.tr.td.find(class_ = 'date').contents
 
-# Experiencelist
-item[i].tr.td.div.find(class_ = 'experienceList').contents
+	# job link
+	link_tag = 'www.indeed.com' + result.h2.a.get('href')
 
-# Listing age
-item[i].tr.td.find(class_ = 'date').contents
+	# Populate dictionary
+	indeed_dict[title_tag] = [comp_tag, loc_tag, sum_tag, exp_tag, age_tag, link_tag]
 
-# job link
-link = 'www.indeed.com' + item[i].h2.a.get('href')
+	return indeed_dict
