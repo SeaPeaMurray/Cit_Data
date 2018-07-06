@@ -18,4 +18,4 @@ def exc(result):
 # print(list(map(exc, no_ad_list)))
 # print(list(map(todf.doconvert, no_ad_list)))
 
-print(no_ad_list[0].span.a.contents)
+print(list(map(exc, no_ad_list)))
