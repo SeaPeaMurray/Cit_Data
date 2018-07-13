@@ -2,31 +2,34 @@
 from bs4 import BeautifulSoup
 
 def doconvert(result):
-	# indeed_dict = {}
+	indeed_dict = {}
 	
 	# Title
-	title_tag = result.h2.a.get('title')
-
-	# Company
-	# comp_tag = result.span.a.contents
+	indeed_dict[title] = result.h2.a.get('title')
 
 	# Location
-	loc_tag = result.find(class_ = 'location').contents[0]
+	indeed_dict[loc] = result.find(class_ = 'location').contents[0]
 
 	# Summary
-	# sum_tag = result.tr.td.div.find(class_ = 'summary').contents
+	indeed_dict[summ] = result.tr.td.div.find(class_ = 'summary').contents
 
 	# Experiencelist
-	# exp_tag = result.tr.td.div.find(class_ = 'experienceList').contents
+	indeed_dict[exp] = result.tr.td.div.find(class_ = 'experienceList').contents
 
 	# Listing age
-	# age_tag = result.tr.td.find(class_ = 'date').contents
+	indeed_dict[age] = result.tr.td.find(class_ = 'date').contents
 
 	# job link
-	# link_tag = 'www.indeed.com' + result.h2.a.get('href')
+	indeed_dict[link] = 'www.indeed.com' + result.h2.a.get('href')
+
+	# Company
+	try:
+		indeed_dict[comp] = result.span.a.contents
+	except:
+		pass
 
 	# Populate dictionary
 	# indeed_dict[title_tag] = [comp_tag, loc_tag, sum_tag, exp_tag, age_tag, link_tag]
 
-	return title_tag, loc_tag
-	# return indeed_dict
+	# return comp_tag
+	return indeed_dict

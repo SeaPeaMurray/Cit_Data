@@ -56,10 +56,10 @@ def indeed():
 					soup_list.append(item)
 			collection_list += soup_list
 	
-	print(len(collection_list))
-	print(collection_list[0]) # Remove these later
-
-	# indeed_todf.indeedtoframe(collection_list)
+	# print(len(collection_list))
+	# print(collection_list[0]) # Remove these later
+	return collection_list
+	# print(indeed_todf.doconvert(collection_list))
 
 if __name__ == '__main__':
 	indeed()
