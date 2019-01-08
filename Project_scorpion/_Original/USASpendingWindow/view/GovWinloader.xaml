@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="USAspendingWindow.GovWinloader"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:USAspendingWindow"
+             mc:Ignorable="d"  
+             xmlns:awe="http://schemas.awesomium.com/winfx"
+             
+    Height="722" Width="924" Loaded="UserControl_Loaded">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/USAspendingWindow;component/1024215-1366x768-%5bDesktopNexus_com%5d.jpg" />
+        </Grid.Background>
+        <Button  Content="Load" Height="23" HorizontalAlignment="Left" Margin="481,212,0,0" Name="button1" VerticalAlignment="Top" Width="75" Click="button1_Click_1" />
+        <Label Content="Pick the Fiscal Year, or nothing to default the current year." Height="36" HorizontalAlignment="Left" Margin="17,97,0,0" Name="label1" VerticalAlignment="Top" Width="335" Foreground="Snow" FontSize="18" />
+        <ComboBox IsEnabled="False" Height="23" HorizontalAlignment="Left" Margin="17,147,0,0" Name="comboBox1" VerticalAlignment="Top" Width="120" />
+        <!--<Label Content="Pick the date of the year to update from, or nothing for default" HorizontalAlignment="Left" Margin="17,166,0,0" Name="label2" Foreground="Snow" Height="36" VerticalAlignment="Top" FontSize="18" />-->
+        <Label Content="GovWin database update" Height="63" HorizontalAlignment="Left" Margin="17,41,0,0" Name="label3" VerticalAlignment="Top" FontSize="24" Width="621" FontFamily="Bookman Old Style" Foreground="White" />
+        <!--<DatePicker IsEnabled="False"  DisplayDate="{Binding DateTime.Now}" Height="25" HorizontalAlignment="Left" Margin="17,210,0,0" Name="datePicker1" VerticalAlignment="Top" Width="115" />-->
+        <TextBox Name="textBox1" AcceptsReturn="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Left" Width="141" Height="408" VerticalAlignment="Top" Margin="14,261,0,0" />
+        <awe:WebControl Margin="168,261,12,0" Name="webControl1" ShowCreatedWebView="webControl1_ShowCreatedWebView" Height="408" VerticalAlignment="Top" />
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="481,147,0,0" Name="comboBox2" VerticalAlignment="Top" Width="260" />
+        <Label Content="Agency" Height="36" HorizontalAlignment="Right" Margin="0,97,353,0" Name="label4" VerticalAlignment="Top" Width="68" Foreground="Snow" FontSize="18" />
+        <Image Height="129" HorizontalAlignment="Left" Margin="673,12,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="200" Source="/USAspendingWindow;component/USA-icon.png" />
+       
+    </Grid>
+   
+</UserControl>

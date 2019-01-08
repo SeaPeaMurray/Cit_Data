@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="USAspendingWindow.querycontract"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+              xmlns:local="clr-namespace:USAspendingWindow"
+          Height="722" Width="924" Loaded="Window_Loaded" Cursor="{Binding cursor}">
+    <UserControl.DataContext>
+        <local:querycontractviewmodel/>
+    </UserControl.DataContext>
+    <Grid>
+        <Rectangle Height="189" HorizontalAlignment="Left" Margin="41,63,0,0" Name="rectangle1" Stroke="Black" VerticalAlignment="Top" Width="710" />
+        <ComboBox ItemsSource="{Binding fielditems}" DisplayMemberPath="Display" SelectedValuePath="Value" SelectedValue="{Binding selectfield}" SelectedIndex="{Binding fieldindex}" Height="23" Margin="369,98,0,0" Name="comboBox1" VerticalAlignment="Top" SelectionChanged="comboBox1_SelectionChanged" HorizontalAlignment="Left" Width="120" />
+        <ComboBox ItemsSource="{Binding stringopitems}" DisplayMemberPath="Display" SelectedValuePath="Value" SelectedValue="{Binding selectstringop}" Height="23" HorizontalAlignment="Left" Margin="495,98,0,0" Name="comboBox2" VerticalAlignment="Top" Width="120" />
+        <DatePicker SelectedDate="{Binding selectdate}" Height="25" HorizontalAlignment="Left" Margin="621,98,0,0" Name="datePicker1" VerticalAlignment="Top" Width="115" />
+        <TextBox Text="{Binding numstrtext, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Height="23" HorizontalAlignment="Left" Margin="621,100,0,0" Name="textBox1" VerticalAlignment="Top" Width="115" />
+        <Button Command="{Binding ViewSwitchCommand}" CommandParameter="add" Content="Add" Height="23" HorizontalAlignment="Left" Margin="49,136,0,0" Name="button1" VerticalAlignment="Top" Width="75"  />
+        <TextBox Text="{Binding filtertext, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Height="76" HorizontalAlignment="Left" Margin="60,165,0,0" Name="textBox2" VerticalAlignment="Top" Width="627" IsReadOnly="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" />
+        <ComboBox ItemsSource="{Binding opitems}" DisplayMemberPath="Display" SelectedValuePath="Value" SelectedValue="{Binding selectop}" Height="23" HorizontalAlignment="Left" Margin="495,98,0,0" Name="comboBox3" VerticalAlignment="Top" Width="120" />
+        <Button Command="{Binding ViewSwitchCommand}" CommandParameter="try"  Content="Try" Height="23" HorizontalAlignment="Left" Margin="138,136,0,0" Name="button2" VerticalAlignment="Top" Width="75"  />
+        <Label Content="Query contracts" Height="49" HorizontalAlignment="Left" Margin="41,12,0,0" Name="label2" VerticalAlignment="Top" Width="182" FontSize="24" FontFamily="Arial" />
+        <Button Command="{Binding ViewSwitchCommand}" CommandParameter="clear" Content="Clear" Height="23" HorizontalAlignment="Left" Margin="232,136,0,0" Name="button3" VerticalAlignment="Top" Width="75" />
+        <Button Command="{Binding ViewSwitchCommand}" CommandParameter="query" Content="Query" Height="23" HorizontalAlignment="Left" Margin="324,136,0,0" Name="button4" VerticalAlignment="Top" Width="75" />
+        <DataGrid SelectionMode="Single" IsReadOnly="True"   ItemsSource="{Binding sumitems}" SelectedItem="{Binding fieldindex}"  AutoGenerateColumns="False" Height="362" HorizontalAlignment="Left" Margin="41,258,0,0" Name="dataGrid1" VerticalAlignment="Top" Width="710" IsSynchronizedWithCurrentItem="True" CanUserAddRows="False" >         
+            <DataGrid.InputBindings>
+                <MouseBinding
+            MouseAction="LeftDoubleClick"
+            Command="{Binding ClickCommand}"
+            CommandParameter="{Binding sumitems/}"/>
+            </DataGrid.InputBindings>           
+                <DataGrid.Columns>
+                <DataGridTextColumn Header="Vendor Name" Binding="{Binding vendorname}" />
+                <DataGridTextColumn Header="Product Service Code" Binding="{Binding productorservicecode}" />
+                <DataGridTextColumn Header="Principal NAICS Code" Binding="{Binding principalnaicscode}" />
+                <DataGridTextColumn Header="Contract Vehicle" Binding="{Binding contract_vehicle}" />
+                <DataGridTextColumn Header="PIID" Binding="{Binding piid}" />
+                <DataGridTextColumn Header="Description of Contract Requirement" Binding="{Binding descriptionofcontractrequirement}" />
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <ComboBox ItemsSource="{Binding agencyitems}" DisplayMemberPath="Display" SelectedValuePath="Value" SelectedValue="{Binding selectfilteragency}" Height="23" HorizontalAlignment="Left" Margin="49,98,0,0" Name="comboBox4" VerticalAlignment="Top" Width="188" />
+        <Label Content="Filter value" Height="28" HorizontalAlignment="Left" Margin="643,63,0,0" Name="label3" VerticalAlignment="Top" />
+        <Label Content="Operation" Height="28" HorizontalAlignment="Left" Margin="538,63,0,0" Name="label4" VerticalAlignment="Top" />
+        <Label Content="Field" Height="28" HorizontalAlignment="Left" Margin="400,63,0,0" Name="label5" VerticalAlignment="Top" />
+        <Label Content="Agency" Height="28" HorizontalAlignment="Left" Margin="89,63,0,0" Name="label6" VerticalAlignment="Top" />
+        <!--<Label Content="Year" Height="28" HorizontalAlignment="Left" Margin="283,63,0,0" Name="label1" VerticalAlignment="Top" />-->
+        <!--<ComboBox ItemsSource="{Binding yearitems}" DisplayMemberPath="Display" SelectedValuePath="Value" SelectedValue="{Binding selectyear}" Height="23" HorizontalAlignment="Left" Margin="243,98,0,0" Name="comboBox6" VerticalAlignment="Top" Width="120" />-->
+        <Label Content="Search Filter" Height="35" HorizontalAlignment="Left" Margin="305,26,0,0" Name="label7" VerticalAlignment="Top" Width="121" FontFamily="Arial" FontSize="16" />
+        <Button Command="{Binding ViewSwitchCommand}" CommandParameter="excelcsv" Content="Details to Excel" Height="23" HorizontalAlignment="Left" Margin="414,136,0,0" Name="button5" VerticalAlignment="Top" Width="96" />
+        <Button Command="{Binding ViewSwitchCommand}" CommandParameter="excelpivot" Content="Details to Excel Pivot" Height="23" Margin="526,136,0,0" Name="button6" VerticalAlignment="Top" HorizontalAlignment="Left" Width="129" />
+    </Grid>
+</UserControl>

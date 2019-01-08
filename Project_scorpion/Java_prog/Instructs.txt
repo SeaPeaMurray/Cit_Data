@@ -1,0 +1,20 @@
+// PRE CONDITIONS
+// "Zero records" removed
+// Empty parent_award_id fields are populated with that record's award_id_piid.
+// parent_award_id moved to first column position.
+// Column added after parent_award_id column labeled as Contract Vehicle.
+// Data file sorted on parent_award_id.
+// Save file as PreCondition.csv.
+// Have separate file w/2x array showing parent_award_id and associated Contract Vehicle, also sorted by parent_award_id.
+// Save file as ContractVehicles.csv. Current maximum is 1000 rows.
+// Have both files in the same directory as the executable.
+// Run:  java AddContractVehicles > cv.csv
+// The file cs.csv will have contract vehicles added.
+// The last rows will have some simple stats. View for sanity check and delete those rows.
+// Move columns in cv.csv to have the following as the first two columns:
+// parent_award_id, award_id_piid
+// Insert a blank column to the right of award_id_piid named Work.
+// Ensure Work.csv is sorted on first two columns.
+// Run new cv file with work executable:
+// java AddWork > wk.csv
+// open file, check and delete last rows with status info.

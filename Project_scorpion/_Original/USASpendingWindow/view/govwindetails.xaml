@@ -1,0 +1,25 @@
+﻿<Window x:Class="USAspendingWindow.govwindetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="GovWin details" Height="456" Width="1047">
+    <Grid>
+        <DataGrid ItemsSource="{Binding logitems}" AutoGenerateColumns="False" Height="349" HorizontalAlignment="Left" Margin="12,68,0,0" Name="dataGrid1" VerticalAlignment="Top" Width="1013" CanUserAddRows="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Contract Name" Binding="{Binding Contract_name}" />
+                <DataGridTextColumn Header="Priority" Binding="{Binding Priority}" />
+                <DataGridTextColumn Header="Contract Number" Binding="{Binding Contract_number}" />
+                <DataGridTextColumn Header="Vendor" Binding="{Binding Vendor}" />
+                <DataGridTextColumn Header="Start Date" Binding="{Binding Start_date}" />
+                <DataGridTextColumn Header="Ultimate Expiration Date" Binding="{Binding Ultimate_expiration_date}" />
+                <DataGridTextColumn Header="Primary Requirment" Binding="{Binding Primary_requirement}" />
+                <DataGridTextColumn Header="Contract Type" Binding="{Binding Contract_type}" />
+                <DataGridTextColumn Header="Contract Vehicle" Binding="{Binding Contract_vehicle}" />
+                <DataGridTextColumn Header="PSC" Binding="{Binding PSC}" />
+                <DataGridTextColumn Header="NAICS" Binding="{Binding NAICS}" />
+               
+
+            </DataGrid.Columns>
+        </DataGrid> 
+        <Button Content="Close" Height="23" HorizontalAlignment="Left" Margin="20,20,0,0" Name="button1" VerticalAlignment="Top" Width="75" Click="button1_Click" />
+    </Grid>
+</Window>
