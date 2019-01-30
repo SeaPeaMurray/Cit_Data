@@ -1,11 +1,20 @@
 import numpy as np
 import pandas as pd
 import re
+import requests
 
 class usaspendingobj:
 
 	def __init__(self):
 		print("Project Scorpion Alpha instance created.\n")
+
+	def api_req(self):
+		
+		params =  {"agency": 22, "fiscal_year": 2016, "type": "contracts"}
+		r = requests.post("https://api.usaspending.gov/api/v2/bulk_download/list_monthly_files//", data=params)
+		self.api_link = r.json()['monthly_files'][0]['url']
+
+	# def unzip(self):
 
 	def read(self, csv):
 		cols = list(pd.read_csv(csv, low_memory=False).columns)

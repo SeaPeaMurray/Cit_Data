@@ -5,5 +5,4 @@ import requests
 
 r = requests.post("https://api.usaspending.gov/api/v2/bulk_download/list_monthly_files//", data=params)
 
-with open('Treasury.txt', 'wb') as file:
-	file.write(r.content)
+print(r.json()['monthly_files'][0]['url'])

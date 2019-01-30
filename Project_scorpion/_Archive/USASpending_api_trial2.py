@@ -8,7 +8,7 @@ new_dict = {
 
 r = requests.post('https://api.usaspending.gov/api/v2/federal_accounts/', data=new_dict)
 
-print(r.content)
+print(r.text)
 
 # import json
 # with open('data.json', 'w') as outfile:

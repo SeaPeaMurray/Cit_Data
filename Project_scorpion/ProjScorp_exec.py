@@ -20,8 +20,9 @@ print('\nThis is a preview of the spreadsheet:\n\n', final.joined_fiscal_bool.he
 
 # Test the columns that have failed converting 'False'
 # print(final.joined_fiscal_bool['township_local_government'][:10])
+# Provide a .csv file if 'no' selected
 
-to_excel = input('Would you like the file converted to an Excel spreadsheet? ')
+to_excel = input('Would you like the file converted to an Excel spreadsheet? yes, y, no, n')
 if str(to_excel).lower() == 'yes' or str(to_excel).lower() == 'y':
 	print('\nThis process can take a few minutes depending on the machine.\n')
 	final.joined_fiscal_bool.to_excel('output.xlsx', index=False)
